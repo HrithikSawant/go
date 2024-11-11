@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -11,6 +12,7 @@ func main() {
 	fmt.Println("Welcome to web verb")
 	PerformGetRequest()
 	PerformPostJsonRequest()
+	PerformPostFormRequest()
 }
 
 func PerformPostJsonRequest() {
@@ -57,4 +59,26 @@ func PerformGetRequest() {
 	fmt.Println("ByteCount is: ", byteCount)
 	fmt.Println(responseString.String())
 	// fmt.Println(string(content))
+}
+
+func PerformPostFormRequest() {
+	const myurl = "http://localhost:8000/postform"
+
+	//formdata
+
+	data := url.Values{}
+	data.Add("firstname", "hrithik")
+	data.Add("lastname", "sawant")
+	data.Add("email", "hrithik-test@gmail.com")
+
+	response, err := http.PostForm(myurl, data)
+	if err != nil {
+		panic(err)
+	}
+
+	defer response.Body.Close()
+
+	content, _ := io.ReadAll(response.Body)
+
+	fmt.Println(string(content))
 }
