@@ -69,7 +69,6 @@ func main() {
 
 	// listen to a port
 	log.Fatal(http.ListenAndServe(":4000", r))
-
 }
 
 //controllers - file
@@ -111,6 +110,7 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 	// what if: body is empty
 	if r.Body == nil {
 		json.NewEncoder(w).Encode("Please send some data")
+		return
 	}
 
 	// what about - {}
