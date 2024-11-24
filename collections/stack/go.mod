@@ -1,3 +1,3 @@
-module github.com/HrithikSawant/go/collections/stack
+module github.com/HrithikSawant/go/tree/main/collections/stack
 
 go 1.23.2
