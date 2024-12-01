@@ -24,7 +24,7 @@ func (q *Queue[T]) DeQueue() (T, error) {
 	return item, nil
 }
 
-func (q *Queue[T]) Peak() (T, error) {
+func (q *Queue[T]) Peek() (T, error) {
 	if q.IsEmpty() {
 		var zero T
 		return zero, fmt.Errorf("queue is empty")

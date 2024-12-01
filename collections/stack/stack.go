@@ -26,7 +26,7 @@ func (s *Stack[T]) Pop() (T, error) {
 	return item, nil
 }
 
-func (s *Stack[T]) Peak() (T, error) {
+func (s *Stack[T]) Peek() (T, error) {
 	if s.IsEmpty() {
 		var zero T
 		return zero, fmt.Errorf("stack is empty")
